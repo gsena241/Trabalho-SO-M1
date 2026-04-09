@@ -108,13 +108,7 @@ void apply_negative(int row_start, int row_end) {
         }
     }
 }
- 
-/* ===== Filtro Slice (Limiarizacao com Fatiamento) =====
- * Conforme enunciado:
- *   se pixel <= t1 OU pixel >= t2  -> 255 (branco)
- *   se t1 < pixel < t2             -> mantem valor original
- */
- 
+  
 void apply_slice(int row_start, int row_end) {
     for (int i = row_start; i < row_end; i++) {
         for (int j = 0; j < g_in.w; j++) {
