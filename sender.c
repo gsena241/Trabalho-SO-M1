@@ -9,7 +9,7 @@ divide a tela
 ./worker meu_fifo saida.pgm negativo 4
 ou ./worker meu_fifo saida_slice2.pgm slice 0 50 4
 ./sender meu_fifo entrada.pgm
- */
+ */ 
  
 #include <stdio.h>
 #include <stdlib.h>
