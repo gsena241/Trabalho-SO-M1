@@ -1,6 +1,6 @@
 # Trabalho-SO-M1
 
-**Grupo:** Kauã de Oliveira, Gustavo Sena, Arthur Fontana  
+**Grupo:** Arthur Fontana, Gustavo Sena, Kauã de Oliveira
 **Professor:** Felipe Viel — Engenharia da Computação — UNIVALI 2026/1
 
 ## Sobre o Projeto
