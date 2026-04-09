@@ -5,9 +5,9 @@
 
 ## Sobre o Projeto
 Este projeto implementa um sistema de processamento digital de imagens (formato `.pgm`) em linguagem C, focado em utilizar conceitos avançados de **Sistemas Operacionais**, especificamente:
-**Comunicação Entre Processos (IPC):** Utilização de *Named Pipes (FIFOs)* para a transferência segura de dados entre processos isolados.
-**Concorrência e Paralelismo:** Uso de *POSIX Threads (pthreads)* para dividir o esforço computacional e acelerar o processamento da imagem.
-**Sincronização de Processos:** Implementação da arquitetura Produtor-Consumidor controlada por *Mutexes* e *Semáforos*.
+- **Comunicação Entre Processos (IPC):** Utilização de *Named Pipes (FIFOs)* para a transferência segura de dados entre processos isolados.
+- **Concorrência e Paralelismo:** Uso de *POSIX Threads (pthreads)* para dividir o esforço computacional e acelerar o processamento da imagem.
+- **Sincronização de Processos:** Implementação da arquitetura Produtor-Consumidor controlada por *Mutexes* e *Semáforos*.
 
 ## Arquitetura do Sistema
 O sistema é composto por dois programas distintos que rodam simultaneamente:
