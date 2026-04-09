@@ -30,7 +30,7 @@ divide a tela
 #define FIFO_PERMS 0666
 #define BLOCO      10   /* linhas por tarefa — melhor balanceamento entre threads */
  
-/* ===== Estruturas ===== */
+/* Estruturas */
  
 typedef struct {
     int w, h, maxv;
@@ -46,7 +46,7 @@ typedef struct {
     int row_end;
 } Task;
  
-/* ===== Fila circular de tarefas ===== */
+/* Fila circular de tarefas */
  
 Task            queue_buf[QMAX];
 int             q_head = 0;
@@ -55,7 +55,7 @@ pthread_mutex_t q_lock = PTHREAD_MUTEX_INITIALIZER;
 sem_t           sem_items;  /* quantas tarefas disponiveis */
 sem_t           sem_space;  /* quantos espacos livres na fila */
  
-/* ===== Dados globais compartilhados pelas threads ===== */
+/* Dados globais compartilhados pelas threads */
  
 PGM g_in, g_out;
 int g_mode     = MODE_NEG;
@@ -63,7 +63,7 @@ int g_t1       = 0;
 int g_t2       = 255;
 int g_nthreads = 4;
  
-/* ===== Utilitario: medicao de tempo ===== */
+/* Utilitario: medicao de tempo */
  
 double get_time_ms(void) {
     struct timeval tv;
@@ -71,7 +71,7 @@ double get_time_ms(void) {
     return (double)tv.tv_sec * 1000.0 + (double)tv.tv_usec / 1000.0;
 }
  
-/* ===== Fila: enqueue (produtor) ===== */
+/* Fila: enqueue (produtor) */
  
 void enqueue(Task t) {
     sem_wait(&sem_space);           /* bloqueia se fila cheia */
@@ -84,7 +84,7 @@ void enqueue(Task t) {
     sem_post(&sem_items);           /* avisa que ha nova tarefa */
 }
  
-/* ===== Fila: dequeue (consumidor) ===== */
+/* Fila: dequeue (consumidor) */
  
 Task dequeue(void) {
     sem_wait(&sem_items);           /* bloqueia se fila vazia */
@@ -98,7 +98,7 @@ Task dequeue(void) {
     return t;
 }
  
-/* ===== Filtro Negativo: s = 255 - r ===== */
+/* Filtro Negativo: s = 255 - r */
  
 void apply_negative(int row_start, int row_end) {
     for (int i = row_start; i < row_end; i++) {
@@ -123,7 +123,7 @@ void apply_slice(int row_start, int row_end) {
     }
 }
  
-/* ===== Funcao executada por cada thread ===== */
+/* Funcao executada por cada thread */
  
 void *worker_thread(void *arg) {
     (void)arg;
@@ -144,7 +144,7 @@ void *worker_thread(void *arg) {
     return NULL;
 }
  
-/* ===== Main ===== */
+/* Main */
  
 int main(int argc, char **argv) {
     if (argc < 4) {
@@ -279,7 +279,7 @@ int main(int argc, char **argv) {
         }
     }
  
-    /* Produz tarefas em blocos de BLOCO linhas — melhor balanceamento */
+    /* Produz tarefas em blocos de BLOCO linhas, melhor balanceamento */
     for (int i = 0; i < g_in.h; i += BLOCO) {
         Task t;
         t.row_start = i;
